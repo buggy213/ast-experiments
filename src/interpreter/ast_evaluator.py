@@ -5,10 +5,12 @@ from types import FunctionType, GeneratorType
 from typing import Any, List, Type
 
 import astpretty
+
+# note: implementation of Frame object not included
 from frame import *
 
 
-# this is only tested to work with Python 3.8.10
+# note: this is only tested to work with Python 3.8.10 (and honestly really only tested with contents of test.py lol)
 
 class AstFunction():
     def __init__(self, body: List[ast.AST], arguments_descriptor: ast.arguments, 
