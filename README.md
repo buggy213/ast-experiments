@@ -3,6 +3,287 @@
 My CS61A (Structure and Interpretation of Computer Programs) plus project and project shown at the project showcase for the Fall 2021 version of the course taught by John Denero and Pamela Fox.
 The main component of the project was a Python metacircular evaluator.
 
+## Example output
+Running `python3.10 ast_evaluator.py --visualize visualize_test.py` (shown below)
+```python
+def recursive_fact(x):
+    if x <= 1:
+        return 1
+    return x * recursive_fact(x - 1)
+    
+print(recursive_fact(5))
+```
+<details><summary>outputs (output truncated, click triangle to expand)</summary>
+<p>
+
+```python
+Python AST (depth 2)
+Compare(
+    lineno=2,
+    col_offset=7,
+    end_lineno=2,
+    end_col_offset=13,
+    left=Name(lineno=2, col_offset=7, end_lineno=2, end_col_offset=8, id='x', ctx=Load()),
+    ops=[LtE()],
+    comparators=[Constant(lineno=2, col_offset=12, end_lineno=2, end_col_offset=13, value=1, kind=None)],
+)
+--------------------------------------------------
+Python Source
+Line number 2, columns 7 to 13
+    if x <= 1:
+       ˜˜˜˜˜˜
+--------------------------------------------------
+Result
+True
+--------------------------------------------------
+Python AST (depth 2)
+Constant(lineno=3, col_offset=15, end_lineno=3, end_col_offset=16, value=1, kind=None)
+--------------------------------------------------
+Python Source
+Line number 3, columns 15 to 16
+        return 1
+               ˜
+--------------------------------------------------
+Result
+1
+--------------------------------------------------
+Python AST (depth 2)
+Call(
+    lineno=4,
+    col_offset=15,
+    end_lineno=4,
+    end_col_offset=36,
+    func=Name(lineno=4, col_offset=15, end_lineno=4, end_col_offset=29, id='recursive_fact', ctx=Load()),
+    args=[
+        BinOp(
+            lineno=4,
+            col_offset=30,
+            end_lineno=4,
+            end_col_offset=35,
+            left=...,
+            op=...,
+            right=...,
+        ),
+    ],
+    keywords=[],
+)
+--------------------------------------------------
+Python Source
+Line number 4, columns 15 to 36
+    return x * recursive_fact(x - 1)
+               ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
+--------------------------------------------------
+Result
+1
+--------------------------------------------------
+Python AST (depth 2)
+BinOp(
+    lineno=4,
+    col_offset=11,
+    end_lineno=4,
+    end_col_offset=36,
+    left=Name(lineno=4, col_offset=11, end_lineno=4, end_col_offset=12, id='x', ctx=Load()),
+    op=Mult(),
+    right=Call(
+        lineno=4,
+        col_offset=15,
+        end_lineno=4,
+        end_col_offset=36,
+        func=...,
+        args=[
+            ...,
+        ],
+        keywords=[],
+    ),
+)
+--------------------------------------------------
+Python Source
+Line number 4, columns 11 to 36
+    return x * recursive_fact(x - 1)
+           ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
+--------------------------------------------------
+Result
+2
+--------------------------------------------------
+Python AST (depth 2)
+Call(
+    lineno=4,
+    col_offset=15,
+    end_lineno=4,
+    end_col_offset=36,
+    func=Name(lineno=4, col_offset=15, end_lineno=4, end_col_offset=29, id='recursive_fact', ctx=Load()),
+    args=[
+        BinOp(
+            lineno=4,
+            col_offset=30,
+            end_lineno=4,
+            end_col_offset=35,
+            left=...,
+            op=...,
+            right=...,
+        ),
+    ],
+    keywords=[],
+)
+--------------------------------------------------
+Python Source
+Line number 4, columns 15 to 36
+    return x * recursive_fact(x - 1)
+               ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
+--------------------------------------------------
+Result
+2
+--------------------------------------------------
+Python AST (depth 2)
+BinOp(
+    lineno=4,
+    col_offset=11,
+    end_lineno=4,
+    end_col_offset=36,
+    left=Name(lineno=4, col_offset=11, end_lineno=4, end_col_offset=12, id='x', ctx=Load()),
+    op=Mult(),
+    right=Call(
+        lineno=4,
+        col_offset=15,
+        end_lineno=4,
+        end_col_offset=36,
+        func=...,
+        args=[
+            ...,
+        ],
+        keywords=[],
+    ),
+)
+--------------------------------------------------
+Python Source
+Line number 4, columns 11 to 36
+    return x * recursive_fact(x - 1)
+           ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
+--------------------------------------------------
+Result
+6
+--------------------------------------------------
+Python AST (depth 2)
+Call(
+    lineno=4,
+    col_offset=15,
+    end_lineno=4,
+    end_col_offset=36,
+    func=Name(lineno=4, col_offset=15, end_lineno=4, end_col_offset=29, id='recursive_fact', ctx=Load()),
+    args=[
+        BinOp(
+            lineno=4,
+            col_offset=30,
+            end_lineno=4,
+            end_col_offset=35,
+            left=...,
+            op=...,
+            right=...,
+        ),
+    ],
+    keywords=[],
+)
+--------------------------------------------------
+Python Source
+Line number 4, columns 15 to 36
+    return x * recursive_fact(x - 1)
+               ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
+--------------------------------------------------
+Result
+6
+--------------------------------------------------
+Python AST (depth 2)
+BinOp(
+    lineno=4,
+    col_offset=11,
+    end_lineno=4,
+    end_col_offset=36,
+    left=Name(lineno=4, col_offset=11, end_lineno=4, end_col_offset=12, id='x', ctx=Load()),
+    op=Mult(),
+    right=Call(
+        lineno=4,
+        col_offset=15,
+        end_lineno=4,
+        end_col_offset=36,
+        func=...,
+        args=[
+            ...,
+        ],
+        keywords=[],
+    ),
+)
+--------------------------------------------------
+Python Source
+Line number 4, columns 11 to 36
+    return x * recursive_fact(x - 1)
+           ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
+--------------------------------------------------
+Result
+24
+--------------------------------------------------
+Python AST (depth 2)
+Call(
+    lineno=4,
+    col_offset=15,
+    end_lineno=4,
+    end_col_offset=36,
+    func=Name(lineno=4, col_offset=15, end_lineno=4, end_col_offset=29, id='recursive_fact', ctx=Load()),
+    args=[
+        BinOp(
+            lineno=4,
+            col_offset=30,
+            end_lineno=4,
+            end_col_offset=35,
+            left=...,
+            op=...,
+            right=...,
+        ),
+    ],
+    keywords=[],
+)
+--------------------------------------------------
+Python Source
+Line number 4, columns 15 to 36
+    return x * recursive_fact(x - 1)
+               ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
+--------------------------------------------------
+Result
+24
+--------------------------------------------------
+Python AST (depth 2)
+BinOp(
+    lineno=4,
+    col_offset=11,
+    end_lineno=4,
+    end_col_offset=36,
+    left=Name(lineno=4, col_offset=11, end_lineno=4, end_col_offset=12, id='x', ctx=Load()),
+    op=Mult(),
+    right=Call(
+        lineno=4,
+        col_offset=15,
+        end_lineno=4,
+        end_col_offset=36,
+        func=...,
+        args=[
+            ...,
+        ],
+        keywords=[],
+    ),
+)
+--------------------------------------------------
+Python Source
+Line number 4, columns 11 to 36
+    return x * recursive_fact(x - 1)
+           ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
+--------------------------------------------------
+Result
+120
+--------------------------------------------------
+```
+
+</p>
+</details>
+
 ## Usage
 Unfortunately, this project does not contain all of the code needed to actually output any results.
 The interpreter is missing frame.py, and the transpiler is omitted entirely. Both contain code which was extremely similar to the final project for the class, 
