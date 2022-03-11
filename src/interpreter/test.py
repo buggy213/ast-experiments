@@ -7,7 +7,6 @@ def iterative_fact(x):
     i, j = 1, 1
     while i <= x:
         i, j = i + 1, j * i
-
     return j
 
 print(recursive_fact(5))
@@ -73,5 +72,5 @@ def count_coins(change):
         return with_coin + without_coin
     return helper(change, 25)
 
-# print(count_coins(100))
-# print(count_coins(200))
+print(count_coins(100))
+print(count_coins(200))
